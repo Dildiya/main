@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Farm Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f7;
+            padding: 20px;
+        }
+        h2 {
+            color: #2e7d32;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+        th {
+            background-color: #a5d6a7;
+        }
+        button {
+            padding: 6px 12px;
+            background-color: #2e7d32;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #1b5e20;
+        }
+    </style>
+</head>
+<body>
+
+<h2>🌱 Welcome {{ farm_name }}</h2>
+
+<h3>Available Expired Food for Agricultural Use</h3>
+
+<table>
+    <tr>
+        <th>Food Item</th>
+        <th>Quantity</th>
+        <th>Redirected At</th>
+        <th>Action</th>
+    </tr>
+
+    {% for food in expired_foods %}
+    <tr>
+        <td>{{ food.food_name }}</td>
+        <td>{{ food.quantity }} {{ food.unit }}</td>
+        <td>{{ food.redirected_at }}</td>
+        <td>
+            <form method="POST" action="{{ url_for('accept_expired_food') }}">
+                <input type="hidden" name="expired_id" value="{{ food.expired_id }}">
+                <button type="submit">Accept</button>
+            </form>
+        </td>
+    </tr>
+    {% else %}
+    <tr>
+        <td colspan="4">No expired food available</td>
+    </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>

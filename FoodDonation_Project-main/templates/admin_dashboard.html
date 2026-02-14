@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/static/css/admin_dashboard.css">
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header class="bg-success text-white py-3 text-center">
+        <h1>Food Donation Management</h1>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container my-5">
+        <div class="recipient-container shadow rounded p-4 bg-white mx-auto" style="max-width: 450px;">
+
+            <!-- Welcome Message -->
+            <p class="welcome-message text-center fw-bold mb-4">
+                Welcome, {{ username }}!
+            </p>
+
+            <!-- Admin Menu -->
+            <ul class="list-unstyled text-center menu-list">
+
+                <li>
+                    <a href="/admin/view-donation-statistics"
+                       class="btn btn-outline-success w-100 mb-3">
+                        View Donation Statistics
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/admin/view-user-logs"
+                       class="btn btn-outline-success w-100 mb-3">
+                        View User Activity Logs
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/admin/farm-accepted-food"
+                       class="btn btn-outline-success w-100 mb-3">
+                        View Expired Food Accepted by Farms
+                    </a>
+                </li>
+
+               
+                <li>
+                    <a href="{{ url_for('manage_rewards') }}" class="btn btn-outline-success w-100 mb-3">
+    Manage Donor Rewards
+</a>
+
+                </li>
+
+
+                 <li>
+                    <a href="/admin/delete-user"
+                       class="btn btn-outline-danger w-100 mb-3">
+                        Delete Users
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/logout"
+                       class="btn btn-danger w-100">
+                        Logout
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+    </main>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
